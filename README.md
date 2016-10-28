@@ -1,26 +1,58 @@
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+:earth_africa: :earth_americas: :earth_asia:
+
+##  BONG GIT INIT
+----
+
+### GitHub
+
+* Create new repo in git.
+* Add the other bong boy in repo Settings > Collaborators
+* Copy the repo url.
 
 
-Hi there! Welcome to Cloud9 IDE!
+### Terminal
 
-To get you started, we included a small hello world application.
+Init the thing:
 
-1) Open the hello-world.html file
+```
+$ git init
+```
 
-2) Click on the Preview button to open a live preview pane
+Add the files:
 
-3) Make some changes to the file, save, watch the preview, and have fun!
+```
+$ git add .
+```
 
-Happy coding!
-The Cloud9 IDE team
+Commit the files:
 
+```
+$ git commit -m "First commit from the bong boys"
+```
 
-## Support & Documentation
+Add the repo URL as the remote origin:
 
-Visit http://docs.c9.io for documentation, or http://support.c9.io for support.
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+```
+$ git remote add origin THE_REPO_URL
+```
+
+Verify the URL
+
+```
+$ git remote -v
+```
+
+Push the changes to the GitHub
+
+```
+$ git push -u origin master
+```
+
+## BONG GIT GUIDE
+----
+
+* Do some code magic
+* See what the remote doesn’t have yet: `$ git status`
+* Add them files: `$ git add .`
+* Commit them files with a clever message: `$ git commit -m "what i done did"`
+* Push em: `$ git push"`
