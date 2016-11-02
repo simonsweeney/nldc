@@ -52,8 +52,130 @@
     
     <body>
         
-        <script type="text/javascript" src="./bundle.js"></script>
         
+        <p>NL<span class="container"></span><i></i><span class="dc">DC</span></p>        
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+  
+  
+        <script type="text/javascript" src="./bundle.js"></script>
+        <script>
+        
+            var $el = $('.container');
+
+
+            
+            function typeString(str) {
+                
+                ret = str.split("");
+                
+                for ( var i = 1; i < ret.length; i++ ) { 
+                
+                    ret[i] = ret[i-1] + ret[i];
+    
+                }
+                
+                return ret;
+                
+            }
+            
+            // function changeString2( str ) {
+                
+            //     var ret = [];
+                
+            //     for ( var i = 0; i < str.length; i++ ) {
+                    
+            //         ret.push( str.slice( 0, i + 1 ) );
+                    
+            //     }
+                
+            //     return ret;
+                
+            // }
+            
+            
+            
+            
+            
+            var typeSpeed = 100;
+   
+
+            function makeFrames( strings ) {
+                
+                var ret = [];
+                
+                for ( var i = 0; i < strings.length; i++ ) {
+                    
+                    
+                    var string = strings[ i ];
+
+  
+                    for ( var k = 0; k < 25; k++ ) {
+                        ret.push('');
+                    }
+                    
+                    ret = ret.concat( typeString( string ) );
+         
+                    for ( var j = 0; j < 15; j++ ) {
+                        ret.push(string);
+                    }
+                    
+                    ret = ret.concat( typeString( string ).reverse() );
+                  
+                    
+                }
+                
+                return ret;
+                
+            }
+            
+            var phrases = ['Dutch Data Center', 'Coming Soon'];
+
+            var frames = makeFrames( phrases );
+            
+
+            
+            
+            var counter = 0;
+
+
+            
+            var typeTimer = setInterval(function(){
+                
+                var frame = frames[counter];  
+                
+                $el.text( frame );
+                counter++;
+                
+                
+                if ( frame == "" ){
+                    $el.removeClass('typing');
+                } else {
+                    $el.addClass('typing');
+                }
+                
+                
+                if ( frame == "" || phrases.indexOf( frame ) !== -1 ) {
+                    
+                    $('i').addClass('flashing');
+
+                } else {
+                    
+                    $('i').removeClass('flashing');
+
+                }
+                
+                if (counter > frames.length) {                                    
+                    counter = 0;
+                }
+                
+            }, typeSpeed);
+            
+
+        
+        </script>
     </body>
     
 </html>
