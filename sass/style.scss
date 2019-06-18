@@ -1,124 +1,16 @@
-/*
- * Legal Disclaimer
- *
- * These Fonts are licensed only for use on these domains and their subdomains:
- * nldc.nl
- *
- * It is illegal to download or use them on other websites.
- *
- * While the @font-face statements below may be modified by the client, this
- * disclaimer may not be removed.
- *
- * Lineto.com, 2016
- */
+@import 'modules/variables';
+@import 'modules/mixins';
 
+@import 'globals/reset';
+@import 'globals/typography';
+@import 'globals/grid';
 
-/*
- *
- * INSTRUCTIONS
- *
- * Copy the Legal Disclaimer and the @font-faces statements to your regular CSS file.
- * The fonts folder(s) should be placed relative to the regular CSS file.
- *
- * You can use either the complete or subsetted fonts:
- * If you don’t require the entire range of characters, you can use the smaller, subsetted webfonts instead.
- * See "Glyphs & Languages" for an overview of the characters in the *_subsetted.html file in the root directory of this package.
- *
- */
-
-
-/* Complete */
-
-@font-face {
-    font-family: "Typ1451-Bold";
-    src:url("fonts/lineto-typ1451-bold.eot");
-    src:url("fonts/lineto-typ1451-bold.eot?#iefix") format("embedded-opentype"),
-        url("fonts/lineto-typ1451-bold.woff2") format("woff2"),
-        url("fonts/lineto-typ1451-bold.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-
-* {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-}
-
-body {
-    background-color: #007cff;
-    font-family: "Typ1451-Bold";
-    box-sizing: border-box;
-    opacity: 1;
-    
-    p {
-        opacity: 1;
-        color: white;
-        position: absolute;
-        left: 11.25vw;
-        top: 7.5vw;
-        width: 45vw;
-        font-size: 50px;
-        line-height: 1.1;
-        text-transform: uppercase;
-
-        .container {
-            color: black;
-            padding-left: 0.12em;
-            opacity: 1;
-            &.typing {
-                padding-right: 0.10em;
-            }
-        }
-        
-
-        .dc {
-            padding-left: 0.25em;
-        }
-        
-        i {
-            
-            $width: 0.113333333em;
-            
-            content: "";
-            position: absolute;
-            background-color: white;
-            border-radius: $width / 2;
-            width: $width;
-            margin-top: 0.04em;
-            height: 1.06em;
-            
-            &.flashing {
-                animation: flash 0.75s infinite;
-            }
-        }
-    }
-}
-
-
-@keyframes flash {
-    0% {
-        opacity: 1; 
-    }
-    50% {
-        opacity: 1;
-    }
-    51% {
-        opacity: 0;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-
-
-
-@media (max-width: 420px)  {
-    
-    body { 
-        p {
-            width: 75vw; 
-            font-size: 30px;
-        }
-    }
-
-}
+@import 'partials/nav';
+@import 'partials/sidebar';
+@import 'partials/main';
+@import 'partials/footer';
+@import 'partials/carousel';
+@import 'partials/blocks';
+@import 'partials/map';
+@import 'partials/people';
+@import 'partials/timeline';

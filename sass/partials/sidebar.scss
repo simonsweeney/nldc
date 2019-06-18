@@ -1,0 +1,254 @@
+.sidebar{
+    
+    $duration: 1s;
+    $easing: cubic-bezier(1.000, 0.000, 0.640, 1.000);
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    min-height: $mobile-header-height;
+    background: $blue;
+    color: black;
+    padding-top: $mobile-heading / 2 * 1.5;
+    padding-left: $mobile-heading / 2 * 1.5;
+    padding-bottom: $mobile-heading / 2 * 1.5;
+    padding-right: 16.666vw;
+    line-height: 1.2;
+    transition: min-height $duration / 2 $easing;
+    overflow: hidden;
+    
+    .intro & {
+        white-space: nowrap;
+        height: 4.18em;
+        transition: min-height $duration $easing;
+        //padding: $mobile-heading / 2 * 1.5;
+        padding: 0;
+    }
+    
+    .intro-start &,
+    .menu-open &,
+    .page_contact & {
+        min-height: 100%;
+    }
+    
+    &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: $mobile-heading / 2 * 1.5;
+        height: 6em;
+        background: linear-gradient(to bottom, $blue 0%, $blue 85%, transparentize($blue, 1) 100%);
+        pointer-events: none;
+        z-index: 30;
+    }
+    
+    @include tablet-landscape {
+        
+        padding-left: 100% * 1/32;
+        padding-right: 100% * 1/32;
+        padding-top: $menu-button-margin-tablet-landscape;
+        padding-bottom: $menu-button-margin-tablet-landscape;
+        
+        width: calc( #{$desktop-sidebar-width} + 1px );
+        height: 100%;
+
+        transition: width $duration / 2 $easing;
+        
+        .intro & {
+            width: $desktop-sidebar-width;
+            height: 100%;
+            padding-left: 100% * 1/32;
+            padding-right: 100% * 1/32;
+            padding-top: $menu-button-margin-tablet-landscape;
+            padding-bottom: $menu-button-margin-tablet-landscape;
+            transition: width $duration $easing;
+        }
+        
+        .intro-start &,
+        .menu-open &,
+        .page_contact &{
+            width: 100%;
+        }
+        
+    }
+    
+    @include desktop {
+        
+        padding-top: $menu-button-margin-desktop;
+        padding-bottom: $menu-button-margin-desktop;
+
+        .intro & {
+            padding-top: $menu-button-margin-desktop;
+            padding-bottom: $menu-button-margin-desktop;
+        }
+        
+    }
+    
+    &__inner{
+        
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        font-size: $mobile-heading;
+        font-family: Typ1451-Bold;
+        text-transform: uppercase;
+        z-index: 40;
+        transform-origin: 0 0;
+    
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+        
+        @include tablet {
+            letter-spacing: -1px;
+        }
+        
+        @include tablet-landscape {
+            top: -12px;
+            font-size: $desktop-heading * .666;
+        }
+        
+        @include desktop {
+            font-size: $desktop-heading;
+        }
+        
+        .intro & {
+            
+            $size-ratio: $mobile-heading / (2.5 * $desktop-heading);
+
+            transition:
+                top $duration $easing,
+                left $duration $easing,
+                transform $duration $easing,
+                font-size $duration $easing;
+                
+            transform: translate(($mobile-heading / 2) * $size-ratio, ($mobile-heading / 2) * $size-ratio ) scale( $size-ratio );
+            font-size: 2.5 * $desktop-heading;
+            
+            @include tablet-landscape {
+                
+                transform: none;
+                font-size: $desktop-heading;
+                
+            }
+            
+        }
+        
+        .intro-start & {
+            
+            transform: translate(-50%, -50%) translate(50vw, 45vh);
+            font-size: 2.5 * $desktop-heading;
+            @include tablet-landscape{
+                font-size: 6 * $desktop-heading;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+    }
+    
+    span {
+        position: relative;
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+    
+    .logo-nl,
+    .logo-dc {
+        color: white;
+    }
+    
+    .logo-nl {
+        margin-right: .08em;
+        a{
+            text-decoration: none;
+        }
+    }
+    
+    &.empty .logo-nl {
+        margin-right: -.16em;
+    }
+    
+    .logo-dc {
+        
+    }
+    
+    .logo-cursor {
+        
+        background: white;
+        width: $mobile-stroke-width;
+        border-radius: $mobile-stroke-width / 2;
+        display: inline-block;
+        height: 1.15em;
+        position: relative;
+        top: .2em;
+        margin-top: -.15em;
+        margin-right: -.17em;
+
+        .intro & {
+            
+            width: .1em;
+            
+        }
+        
+        @include tablet-landscape {
+            width: $desktop-stroke-width;
+            border-radius: $desktop-stroke-width / 2;
+        }
+        
+    }
+    
+    &.flash .logo-cursor {
+        
+        @keyframes flash {
+            
+            0%, 25%, 51%, 75% {
+                opacity: 0;
+            }
+            
+            26%, 50%, 76%, 100% {
+                opacity: 1;
+            }
+            
+        }
+        
+        animation: flash 1.5s 1;
+        
+    }
+    
+    svg {
+        display: inline-block;
+        height: 1em;
+        width: 1em;
+        position: relative;
+        top: .125em;
+    }
+    
+    .input {
+        
+        min-width: 2em;
+        border-bottom: .1em solid white;
+        display: inline-block;
+        outline: 0;
+        height: 1.16em;
+        
+    }
+    
+    svg.button {
+        cursor: pointer;
+        margin-left: .4em;
+    }
+    
+    .typing.highlight {
+        color: black;
+        background: orange;
+    }
+
+}

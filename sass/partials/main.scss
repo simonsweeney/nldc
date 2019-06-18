@@ -1,0 +1,21 @@
+main{
+    margin-top: $mobile-header-height;
+    min-height: 100vh;
+    background: white;
+    display: block;
+    //padding-bottom: 10%;
+    position: relative;
+    padding-top: 1em;
+    @include tablet-landscape {
+        padding-top: 0;
+        margin-top: 0;
+        margin-left: $desktop-sidebar-width;
+        width: 100% - $desktop-sidebar-width;
+    }
+}
+
+#pusher{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+}

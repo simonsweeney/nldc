@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+        main {
+            border: 1px solid teal;
+            margin: 200px;
+            font-size: 150px;
+        }
+        
+        span{
+            color: blue;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <main>
+        
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+    <script>
+        
+            var $el = $('main');
+            
+            var phrases = ['OOOOOOOOOOOI DATA'];
+            
+            var speed = 400;
+            
+            var prefix = '<span>NL</span> ';
+            
+            var suffix = '<span>&#8203;|</span><span>&#8203;DC</span>';
+            
+            function typeString(str) {
+                
+                ret = str.split("");
+                
+                for ( var i = 1; i < ret.length; i++ ) { 
+                
+                    ret[i] = ret[i-1] + ret[i];
+    
+                }
+                
+                return ret;
+                
+            }
+            
+            function makeFrames( strings ) {
+                
+                var ret = [];
+                
+                for ( var i = 0; i < strings.length; i++ ) {
+                    
+                    var string = strings[ i ];
+                    
+                    for ( var k = 0; k < 0; k++ ) {
+                        ret.push('');
+                    }
+                    
+                    ret = ret.concat( typeString( string ) );
+         
+                    for ( var j = 0; j < 15; j++ ) {
+                        ret.push(string);
+                    }
+                    
+                    ret = ret.concat( typeString( string ).reverse() );
+                    
+                }
+                
+                ret = ret.map( s => prefix + s + suffix );
+                
+                return ret;
+                
+            }
+
+            var frames = makeFrames( phrases );
+            
+            var counter = 0;
+            
+            var typeTimer = setInterval(function(){
+                
+                var frame = frames[counter];  
+                
+                $el.html( frame );
+                counter++;
+                
+                
+                if ( frame == "" ){
+                    $el.removeClass('typing');
+                } else {
+                    $el.addClass('typing');
+                }
+                
+                
+                if ( frame == "" || phrases.indexOf( frame ) !== -1 ) {
+                    
+                    $('i').addClass('flashing');
+
+                } else {
+                    
+                    $('i').removeClass('flashing');
+
+                }
+                
+                if (counter > frames.length) {                                    
+                    counter = 0;
+                }
+                
+            }, speed);
+        
+    </script>
+    
+</body>
+</html>

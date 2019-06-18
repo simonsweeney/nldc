@@ -27,13 +27,13 @@ gulp.task('browserify', function(){
 	    })
 	    .transform('browserify-shader')
     	.transform(stringify, {
-            appliesTo: { includeExtensions: ['.html', '.xml', '.c', '.txt'] }
+            appliesTo: { includeExtensions: ['.html', '.xml', '.c', '.txt', '.svg'] }
         })
         .transform('babelify', { presets: ['es2015'] })
 	    .bundle()
 	    .pipe( source('./bundle.js') )
 	    .pipe( buffer() )
-	    //.pipe( uglify() )
+	    .pipe( uglify() )
 	    .on( 'error', gutil.log )
 	    .pipe( gulp.dest('./') );
 	

@@ -1,0 +1,24 @@
+<div class="block block_wide">
+    
+    <div class="grid grid_{{ block.columns }} grid_blocks">
+        
+        {% for file in block.files %}
+        
+            {% if file.kind == 'image' %}
+                
+                <div class="grid__item grid__item_logo" style="background-image:url({{file.url}})"></div>
+                
+            {% else %}
+            
+                <div class="grid__item file">
+                    {{file.title}}
+                    <a href="{{file.url}}"></a>
+                </div>
+            
+            {% endif %}
+        
+        {% endfor %}
+        
+    </div>
+    
+</div>

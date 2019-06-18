@@ -1,0 +1,24 @@
+<div class="block block_wide">
+    
+    <div class="grid grid_blocks">
+        
+        {% for person in craft.entries.section('people') if person.slug != ( except | default('') ) %}
+    
+            <div class="grid__item person-thumbnail" style="background-image: url({{siteUrl}}{{person.portrait.first().url}})">
+                
+                <a href="{{person.url}}">
+                    
+                    <div class="person-thumbnail__info">
+                        <h2>{{person.title}}</h2>
+                        {{person.jobTitle}}
+                    </div>
+                
+                </a>
+                
+            </div>
+            
+        {% endfor %}
+        
+    </div>
+
+</div>

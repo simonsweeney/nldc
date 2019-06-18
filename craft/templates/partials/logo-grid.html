@@ -1,0 +1,15 @@
+<div class="block block_wide">
+    
+    <div class="grid grid_4 grid_blocks grid_customers">
+        
+        {% for logo in logos %}
+        
+            <div class="grid__item grid__item_logo" style="background-image:url({{logo.logo.first().url}})">
+                <a target="_blank" href="{{ logo.website }}"></a>
+            </div>
+        
+        {% endfor %}
+        
+    </div>
+    
+</div>

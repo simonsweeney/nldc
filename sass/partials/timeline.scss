@@ -1,0 +1,87 @@
+.timeline {
+    
+    height: 3em;
+    margin-left: $col1;
+    margin-right: $col1 / 2;
+    margin-bottom: 4em;
+    margin-top: 4em;
+    position: relative;
+    cursor: pointer;
+    
+    @include tablet-landscape {
+        margin-right: $col1;
+    }
+    
+    &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: black;
+        top: 50%;
+        margin-top: -1.5px;
+    }
+    
+    &__handle,
+    &__stop {
+        
+        position: absolute;
+        top: 0;
+        width: 3px;
+        border-radius: 1.5px;
+        pointer-events: none
+
+    }
+    
+    &__handle {
+        background: $blue;
+        height: 100%;
+        z-index: 10;
+    }
+    
+    &__stop {
+        background: black;
+        height: 40%;
+        top: 30%;
+    }
+    
+}
+
+.timeline-copy {
+    
+    height: auto;
+    position: relative;
+    white-space: nowrap;
+    
+    &__entry {
+        width: 100%;
+        display: inline-block;
+    }
+    
+    .block_copy {
+        
+        //position: absolute;
+        border: none;
+        top: 0;
+        white-space: initial;
+        vertical-align: top;
+        
+        &:last-child {
+            margin-bottom: 2em;
+        }
+        
+        strong {
+            margin-bottom: .5em;
+        }
+        
+        p:first-child{
+            margin-top: 0;
+        }
+    }
+    
+}
+
+.timeline-outer {
+    overflow: hidden;
+}

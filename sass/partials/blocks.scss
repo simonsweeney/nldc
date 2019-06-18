@@ -1,0 +1,187 @@
+.blocks {
+    
+    .block, [class*='block_'] {
+        
+        max-width: 860px;
+        margin-left: $col1;
+        margin-right: $col1;
+        
+        @include clear;
+        
+        @include tablet-landscape {
+            margin-right: $col1;
+        }
+        
+    }
+    
+    .block_header {
+        
+        margin-top: 3em;
+        line-height: 1.25;
+        margin-bottom: 1.5em;
+
+    }
+    
+    .block_wide {
+        
+        max-width: none;
+        
+        @include tablet-landscape {
+            margin-right: $col1;
+        }
+        
+    }
+    
+    .block_image {
+        
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
+        padding-bottom: 50%;
+        height: 0;
+        margin-bottom: 3em;
+        background: #c5c5c5;
+        position: relative;
+        background-size: cover;
+        background-position: center center;
+        overflow: hidden;
+        
+        &.no-file {
+            padding-bottom: 35%;
+        }
+        
+        .image__inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            
+            @include desktop {
+                font-size: 1.2em;
+            }
+            
+            h3{
+                text-transform: uppercase;
+                font-size: 2.5em;
+                line-height: 1.1;
+                @include desktop{
+                    font-size: 3.222em;
+                }
+                font-family: "Typ1451-Bold";
+                font-weight: normal;
+                margin: 0;
+            }
+            
+        }
+        
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+    }
+    
+    .block_copy {
+        
+        margin-bottom: 3em;
+        line-height: 1.5;
+        
+        p {
+            margin: 1.5em 0;
+        }
+        
+        p:last-child {
+            margin-bottom: 0;
+        }
+        
+        li:before{
+            content: '•';
+            margin-right: .5em;
+        }
+        
+        &:last-child {
+            padding-bottom: 10%;
+        }
+        
+        // li {
+        //     position: relative;
+        //     padding-left: $col1/3;
+        //     &:not(:last-child){
+        //         margin-bottom: 1em;
+        //     }
+        // }
+        
+        // li:before {
+            
+        //     $col: $col1 * 7 / 5.5;
+            
+        //     content: '';
+        //     display: block;
+        //     position: absolute;
+        //     height: 2px;
+        //     width: $col/4;
+        //     background: $blue;
+        //     left: -$col/2;
+        //     top: .75em;
+        //     margin-top: -1px;
+        //     margin-left: -2px;
+            
+        //     @include tablet {
+                
+        //         $col: $col1 * 7 / 5;
+                
+        //         width: $col/4;
+        //         left: -$col/4;
+                
+        //     }
+            
+        // }
+        
+    }
+        
+    .file {
+        
+        font-family: "Typ1451-Bold";
+        background: $blue;
+        text-transform: uppercase;
+        color: white;
+
+        a:after {
+            content: '';
+            width: 1.25em;
+            height: 1.25em;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-image: url(assets/icons/download_black.svg);
+            display: inline-block;
+            position: relative;
+            top: .25em;
+        }
+        
+    }
+
+    .bg-grey {
+        
+        margin-top: 3em;
+        padding-top: 3em;
+        padding-bottom: 1.5em;
+
+        background: #ededed;
+        
+        h2:first-child {
+            margin-top: 0;
+        }
+        
+        .block_copy {
+            border-color: transparent;
+        }
+
+    }
+    
+}

@@ -1,0 +1,16 @@
+{% set file = block.file.first() %}
+
+{% if file %}
+<div class="block_image" style="background-image: url({{siteUrl ~ file.url}})">
+{% else %}
+<div class="block_image no-file">
+{% endif %}
+    
+    {% if block.headline %}
+        <div class="image__inner">
+            <h3>{{ block.headline }}</h3>
+            {{ block.descriptor }}
+        </div>
+    {% endif %}
+    
+</div>

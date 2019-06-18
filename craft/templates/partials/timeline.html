@@ -1,0 +1,45 @@
+<div class="bg-grey timeline-outer full-width">
+    
+    <h2 class="block_heading">Timeline</h2>
+    
+    <div class="block_copy">
+        
+        {{ entry.body }}
+        
+    </div>
+    
+    <div class="timeline">
+        
+        <div class="timeline__handle"></div>
+        
+        {% set step = 100 / (entry.timeline | length - 1) %}
+        
+        {% for date in entry.timeline %}
+        
+            <div class="timeline__stop" data-year="{{date.year}}" style="left: {{(loop.index - 1) * step}}%"></div>
+        
+        {% endfor %}
+        
+    </div>
+    
+    <div class="block">
+        
+        <strong class="timeline-year">{{entry.timeline.first().year}}</strong>
+        
+    </div>
+    
+    <div class="timeline-copy">
+        
+        {% for date in entry.timeline %}<div class="timeline-copy__entry"  style="opacity: {{ loop.index == 1 ? 1 : 0 }}">
+        
+                <div class="block_copy">
+                    
+                    {{date.timelineContent}}
+                    
+                </div>
+            
+            </div>{% endfor %}
+        
+    </div>
+    
+</div>

@@ -1,0 +1,346 @@
+$max-menu-items: 7;
+
+nav {
+    
+    position: fixed;
+    top: $mobile-header-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    
+    font-size: 1.25em;
+    
+    overflow-y: scroll;
+    
+    @include tablet {
+        font-size: 1em;
+    }
+    
+    @include tablet-landscape {
+        top: 0;
+        left: $desktop-sidebar-width;
+    }
+    
+    .nav__inner {
+    
+        padding: 5em 3em;
+        position: relative;
+
+        @include tablet {
+            padding: 7.5em 4.5em;
+        }
+        
+        @include tablet-landscape {
+            padding: 5em 3em;
+        }
+        
+        @include desktop {
+            padding: 18vh 10%;
+        }
+    
+    }
+    
+    background: black;
+    color: white;
+    line-height: 1.5;
+    
+    transform: translateX(100%);
+    transition: transform .5s .5s cubic-bezier(0.895, 0.030, 0.685, 0.220);
+    
+    .menu-open & {
+        transition: transform .5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+        transform: none;
+    }
+    
+    a {
+        text-decoration: none;
+        font-family: Roboto;
+    }
+    
+    ul {
+        
+        padding-bottom: 2em;
+        
+        @include tablet {
+            
+            padding-bottom: 1em;
+            float: left;
+            width: 50%;
+            min-height: 33.33%;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+            
+        }
+
+        @include desktop-large {
+            
+            width: 33.33%;
+            min-height: 50%;
+            
+            &:nth-child(3) {
+                @include clear;
+            }
+
+        }
+        
+        li {
+            opacity: 0;
+            .menu-open & {
+                opacity: 1;
+            }
+        }
+        
+        li:first-child,
+        &:last-of-type li {
+            text-transform: uppercase;
+            font-size: 1.5em;
+            padding-bottom: 1rem;
+            
+            a {
+                color: $blue;
+                font-family: Typ1451-Bold;
+            }
+            
+            @include tablet {
+                font-size: 1.5em;
+            }
+        }
+        
+        &:last-of-type li {
+            padding-bottom: 0;
+        }
+        
+        @for $i from 1 through $max-menu-items {
+            
+            li:nth-child(#{$i}) {
+                
+                transition: opacity .1s .1s * ($max-menu-items - $i);
+                
+                .menu-open & {
+                    
+                    transition: opacity .1s .1s * $i + .5s;
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    a, a:visited {
+        color: white;
+    }
+    
+    .nav__inner > a,
+    .nav__inner > a:visited {
+        
+        display: block;
+        width: 100%;
+        color: $blue;
+        font-family: Typ1451-Bold;
+        opacity: 0;
+        transition: opacity .1s;
+        
+        @include download-icon('blue');
+        
+        @include tablet {
+            padding-left: 2.5%;
+        }
+        
+        .menu-open & {
+            
+            opacity: 1;
+            transition: opacity .1s .1s * ($max-menu-items + 1);
+            
+        }
+        
+    }
+    
+}
+
+.menu-button {
+    
+    position: fixed;
+    right: $mobile-heading;
+    top: $mobile-heading;
+    
+    width: $menu-button-size-mobile;
+    height: $menu-button-size-mobile;
+    
+    z-index: 100;
+    cursor: pointer;
+    
+    transition: opacity 1s;
+    
+    .intro-start & {
+        opacity: 0;
+    }
+    
+    @include tablet-landscape {
+        
+        width: $menu-button-size-tablet-landscape;
+        height: $menu-button-size-tablet-landscape;
+        top: $menu-button-margin-tablet-landscape;
+        right: $menu-button-margin-tablet-landscape;
+
+    }
+    
+    @include desktop {
+        
+        width: $menu-button-size-desktop;
+        height: $menu-button-size-desktop;
+        top: $menu-button-margin-desktop;
+        right: $menu-button-margin-desktop;
+        
+    }
+    
+    span {
+        
+        display: block;
+        position: absolute;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+
+        @include tablet-landscape {
+            background: $blue;
+            height: 2px;
+            border-radius: 1px;
+        }
+        
+    }
+    
+    .burger-1, .burger-2, .burger-3 {
+        width: 100%;
+    }
+    
+    .x-1, .x-2 {
+        width: 141%;
+        left: -20.5%;
+    }
+    
+    $speed: .1s;
+    
+    .burger-1 {
+        top: 0;
+        transition: opacity $speed $speed * 4;
+    }
+    
+    .burger-2 {
+        top: 50%;
+        transform: translateY(-50%);
+        transition: opacity $speed $speed * 3;
+    }
+    
+    .burger-3 {
+        bottom: 0;
+        transition: opacity $speed $speed * 2;
+    }
+    
+    .x-1, .x-2 {
+        top: 50%;
+        transform-origin: 50% 0;
+    }
+    
+    .x-1 {
+        transform: rotate( -45deg ) translateY(-50%);
+        opacity: 0;
+        transition: opacity $speed $speed;
+    }
+    
+    .x-2 {
+        transform: rotate( 45deg ) translateY(-50%);
+        opacity: 0;
+        transition: opacity $speed;
+        
+    }
+    
+    .menu-open & {
+        
+        .burger-1, .burger-2, .burger-3 {
+            opacity: 0;
+        }
+        
+        .x-1, .x-2 {
+            opacity: 1;
+        }
+        
+        .burger-1 {
+            transition: opacity $speed .5s;
+        }
+        
+        .burger-2 {
+            transition: opacity $speed $speed + .5s;
+        }
+        
+        .burger-3 {
+            transition: opacity $speed $speed * 2 + .5s;
+        }
+        
+        .x-1 {
+            transition: opacity $speed $speed * 3 + .5s;
+        }
+        
+        .x-2 {
+            transition: opacity $speed $speed * 4 + .5s;
+        }
+        
+    }
+    
+}
+
+.nav{
+    
+    display: none;
+    
+    @include tablet-landscape {
+        display: block;
+    }
+    
+    background: $grey;
+    padding-left: $col1;
+    padding-right: $col1;
+    padding-top: $menu-button-margin-tablet-landscape;
+    padding-bottom: $menu-button-margin-tablet-landscape;
+    height: $menu-button-size-tablet-landscape;
+    box-sizing: content-box;
+    font-weight: 500;
+    
+    .page_homepage & {
+        
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        z-index: 40;
+        a {
+            color: white;
+        }
+        
+    }
+    
+    @include desktop {
+        padding-top: $menu-button-margin-desktop;
+        padding-bottom: $menu-button-margin-desktop;
+    }
+    
+    li{
+        display: block;
+        float: left;
+        width: 25%;
+        line-height: 1;
+        
+        @include desktop{
+            height: $menu-button-size-desktop;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+    }
+    
+}

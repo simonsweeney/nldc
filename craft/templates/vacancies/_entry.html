@@ -1,0 +1,19 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    <div class="blocks">
+        
+        <h2 class="block_header">{{entry.title}}</h2>
+        
+        <div class="block_copy">
+            
+            {{ entry.longDescription }}
+            
+            <p><a href="/jobs">Back to Jobs</a></p>
+            
+        </div>
+        
+    </div>
+
+{% endblock %}

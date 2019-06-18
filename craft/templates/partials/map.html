@@ -1,0 +1,17 @@
+<div class="map full-width">
+    
+    <div class="map__inner"></div>
+
+    {% for location in entry.map %}
+    
+        <div class="map__location hidden" data-latlng="{{location.latitude}},{{location.longitude}}">
+            
+            <h2>{{location.city}}</h2>
+            {{location.address | nl2br}}<br><br>
+            <a href="{{location.factsheet.first().url}}">Factsheet (PDF)</a>
+            
+        </div>
+    
+    {% endfor %}
+
+</div>

@@ -1,0 +1,25 @@
+$blue: #007cff;
+$grey: #f2f2f2;
+
+$mobile-base-font-size: 15px;
+$desktop-base-font-size: 18px;
+
+$mobile-heading: 1.5em;
+$desktop-heading: 2.5em;
+
+$mobile-stroke-width: .11em;
+$desktop-stroke-width: .12em;
+
+$mobile-header-height: $mobile-heading * 1.75;
+$desktop-sidebar-width: 6/16 * 100%;
+$desktop-sidebar-width-vw: 6/16 * 100vw;
+
+$menu-button-size-mobile: 20px;
+$menu-button-size-tablet-landscape: 16px;
+$menu-button-size-desktop: 16px;
+
+$col1: 1/10 * 100%;
+$col1-vw: 100vw / 16;
+
+$menu-button-margin-tablet-landscape: calc( #{$col1-vw} - #{$menu-button-size-tablet-landscape} );
+$menu-button-margin-desktop: calc( #{$col1-vw} - #{$menu-button-size-desktop} )

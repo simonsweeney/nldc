@@ -1,0 +1,44 @@
+.carousel {
+    
+    width: 100%;
+    height: calc(80vh - #{$mobile-header-height});
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
+    
+    @include tablet-landscape {
+        
+        height: 90vh;
+        
+    }
+    
+    &__slides {
+        
+        height: 100%;
+        position: relative;
+        
+    }
+    
+    &__slide {
+        
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        position: absolute;
+        top: 0;
+        
+    }
+    
+    &__down {
+        background-image: url(assets/icons/arrow_down.svg);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        display: block;
+        margin: calc(5vh - .5em) auto;
+        width: 2em;
+        height: 1em;
+        z-index: 30;
+    }
+    
+}

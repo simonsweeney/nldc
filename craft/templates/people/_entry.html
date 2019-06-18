@@ -1,0 +1,31 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    <div class="blocks">
+        
+        <div class="block block_wide person">
+            
+            <div class="person__portrait" style="background-image: url({{ siteUrl ~ entry.portrait.first().url }})">
+                
+            </div>
+            
+            <div class="person__info">
+                <h2>{{entry.title}}</h2>
+                {{entry.jobTitle}}<br>
+                <br>
+                <a href="mailto:{{entry.eMail}}">{{entry.eMail}}</a><br>
+                <a href="tel:{{entry.phone}}">{{entry.phone}}</a>
+            </div>
+            
+        </div>
+        
+        <div class="block_copy">
+            {{entry.bio}}
+        </div>
+        
+        {% include 'people/grid.html' with { except: entry.slug } %}
+    
+    </div>
+
+{% endblock %}

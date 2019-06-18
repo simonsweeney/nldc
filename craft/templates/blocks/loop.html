@@ -1,0 +1,9 @@
+<div class="blocks">
+    
+    {% for block in blocks %}
+    
+        {% include 'blocks/' ~ block.type ~ '.html' %}
+    
+    {% endfor %}
+
+</div>

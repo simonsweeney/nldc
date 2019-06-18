@@ -1,0 +1,325 @@
+nav {
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    transition: opacity .5s;
+    
+    .menu-open & {
+        opacity: 1;
+        pointer-events: visible;
+    }
+    
+}
+
+.nav__inner {
+    
+    padding-top: 7em;
+    padding-left: $mobile-heading / 2 * 1.5;
+    padding-right: $mobile-heading / 2 * 1.5;
+    padding-bottom: $mobile-heading * 1.5;
+    color: white;
+    width: 100vw;
+    
+    @include tablet {
+        padding-left: 2/16 * 100vw;
+        padding-right: 1/16 * 100vw;
+        padding-top: 9em;
+    }
+    
+    @include desktop {
+        padding-top: 14em;
+    }
+    
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    .nav__category {
+        
+        margin-bottom: 2em;
+            
+        li {
+            
+            padding-bottom: .5em;
+            
+            @include tablet-landscape {
+                padding-bottom: .25em;
+            }
+            
+            &:first-child{
+                margin-bottom: 1em;
+            }
+        }
+        
+        &.last li,
+        & li:first-child {
+            font-weight: 500;
+            font-size: 1.25em;
+            margin-bottom: 1em;
+        }
+        
+        @include tablet{
+            width: 6/13 * 100%;
+            float: left;
+            margin-bottom: 3em;
+            &:nth-child(2n+1){
+                margin-right: 1/13 * 100%;
+            }
+        }
+        
+        @include tablet-landscape {
+            width: 3/13 * 100%;
+            &:nth-child(2n+1){
+                margin-right: 0;
+            }
+            &:nth-child(3n+1),
+            &:nth-child(3n+2) {
+                margin-right: 2/13 * 100%;
+            }
+        }
+        
+        @include tablet-landscape {
+            &_contact {
+                display: none;
+            }
+        }
+        
+    }
+    
+    .nav__footer {
+        
+        float: left;
+        width: 100%;
+        border-top: 1px solid white;
+        font-size: .9em;
+        
+        padding-top: 2em;
+        padding-bottom: 2em;
+        
+        li{
+            @include tablet{
+                width: 33%;
+                float: left;
+            }
+            @include tablet-landscape {
+                width: 3/12 * 100%;
+                margin-right: 2/12 * 100%;
+                &:last-child{
+                    width: 2/12 * 100%;
+                    margin-right: 0;
+                }
+            }
+        }
+        
+        li:first-child{
+            display: none;
+            @include tablet {
+                display: block;
+            }
+        }
+        
+        @include tablet {
+            padding-bottom: 4em;
+            width: 12/13 * 100%;
+        }
+        
+    }
+    
+}
+
+.menu-button {
+    
+    position: fixed;
+    right: $mobile-heading;
+    top: $mobile-heading;
+    
+    width: $menu-button-size-mobile;
+    height: $menu-button-size-mobile;
+    
+    z-index: 100;
+    cursor: pointer;
+    
+    transition: opacity 1s;
+    
+    .intro-start & {
+        opacity: 0;
+    }
+    
+    @include tablet-landscape {
+        
+        width: $menu-button-size-tablet-landscape;
+        height: $menu-button-size-tablet-landscape;
+        top: $menu-button-margin-tablet-landscape;
+        right: $menu-button-margin-tablet-landscape;
+
+    }
+    
+    @include desktop {
+        
+        width: $menu-button-size-desktop;
+        height: $menu-button-size-desktop;
+        top: $menu-button-margin-desktop;
+        right: $menu-button-margin-desktop;
+        
+    }
+    
+    span {
+        
+        display: block;
+        position: absolute;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+
+        @include tablet-landscape {
+            background: $blue;
+            height: 2px;
+            border-radius: 1px;
+        }
+        
+    }
+    
+    .burger-1, .burger-2, .burger-3 {
+        width: 100%;
+    }
+    
+    .x-1, .x-2 {
+        width: 141%;
+        left: -20.5%;
+        background: white;
+    }
+    
+    $speed: .1s;
+    
+    .burger-1 {
+        top: 0;
+        transition: opacity $speed $speed * 4;
+    }
+    
+    .burger-2 {
+        top: 50%;
+        transform: translateY(-50%);
+        transition: opacity $speed $speed * 3;
+    }
+    
+    .burger-3 {
+        bottom: 0;
+        transition: opacity $speed $speed * 2;
+    }
+    
+    .x-1, .x-2 {
+        top: 50%;
+        transform-origin: 50% 0;
+    }
+    
+    .x-1 {
+        transform: rotate( -45deg ) translateY(-50%);
+        opacity: 0;
+        transition: opacity $speed $speed;
+    }
+    
+    .x-2 {
+        transform: rotate( 45deg ) translateY(-50%);
+        opacity: 0;
+        transition: opacity $speed;
+        
+    }
+    
+    .menu-open & {
+        
+        .burger-1, .burger-2, .burger-3 {
+            opacity: 0;
+        }
+        
+        .x-1, .x-2 {
+            opacity: 1;
+        }
+        
+        .burger-1 {
+            transition: opacity $speed .5s;
+        }
+        
+        .burger-2 {
+            transition: opacity $speed $speed + .5s;
+        }
+        
+        .burger-3 {
+            transition: opacity $speed $speed * 2 + .5s;
+        }
+        
+        .x-1 {
+            transition: opacity $speed $speed * 3 + .5s;
+        }
+        
+        .x-2 {
+            transition: opacity $speed $speed * 4 + .5s;
+        }
+        
+    }
+    
+}
+
+.nav{
+    
+    display: none;
+    
+    @include tablet-landscape {
+        display: block;
+    }
+    
+    background: $grey;
+    padding-left: $col1;
+    padding-right: $col1;
+    padding-top: $menu-button-margin-tablet-landscape;
+    padding-bottom: $menu-button-margin-tablet-landscape;
+    height: $menu-button-size-tablet-landscape;
+    box-sizing: content-box;
+    font-weight: 500;
+    
+    .page_homepage & {
+        
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        z-index: 40;
+        a {
+            color: white;
+        }
+        
+    }
+    
+    @include desktop {
+        padding-top: $menu-button-margin-desktop;
+        padding-bottom: $menu-button-margin-desktop;
+    }
+    
+    li{
+        display: block;
+        float: left;
+        width: 20%;
+        line-height: 1;
+        font-size: .85em;
+        
+        @include desktop{
+            height: $menu-button-size-desktop;
+            font-size: 1em;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+    }
+    
+}

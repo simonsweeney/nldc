@@ -1,0 +1,37 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    <div class="blocks">
+
+        {% for block in entry.blocks %}
+        
+            {% include 'blocks/' ~ block.type ~ '.html' %}
+        
+        {% endfor %}
+        
+        <h2 class="block_header">Carriers & Providers</h2>
+        
+        <div class="block_copy">
+            
+            <p>
+                <strong>Carriers</strong>
+            </p>
+            
+        </div>
+        
+        {% include 'partials/logo-grid.html' with { logos: entry.carriers } %}
+
+        <div class="block_copy">
+            
+            <p>
+                <strong>Providers</strong>
+            </p>
+            
+        </div>
+        
+        {% include 'partials/logo-grid.html' with { logos: entry.providers } %}
+    
+    </div>
+
+{% endblock %}

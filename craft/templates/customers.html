@@ -1,0 +1,19 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+    <div class="blocks">
+
+        {% for block in entry.blocks %}
+        
+            {% include 'blocks/' ~ block.type ~ '.html' %}
+        
+        {% endfor %}
+        
+        <h2 class="block_header">Clients</h2>
+
+        {% include 'partials/logo-grid.html' with { logos: entry.clients } %}
+    
+    </div>
+
+{% endblock %}

@@ -1,0 +1,154 @@
+<!--
+    
+     
+          '             .           .
+       o       '   o  .     '   . O
+    '   .   ' .   _____  '    .      .
+     .     .   .mMMMMMMMm.  '  o  '   .
+   '   .     .MMXXXXXXXXXMM.    .   ' 
+  .       . /XX77:::::::77XX\ .   .   .
+     o  .  ;X7:::''''''':::7X;   .  '
+    '    . |::'.: BONG    '::| .   .  .
+       .   ;:.:.            :;. o   .
+    '     . \'.:            /.    '   .
+       .     `.':.        .'.  '    .
+     '   . '  .`-._____.-'   .  . '  .
+      ' o   '  .   O   .   '  o    '
+       . ' .  ' . '  ' O   . '  '   '
+        . .   '    '  .  '   . '  '
+         . .'..' . ' ' . . '.  . '
+          `.':.'        ':'.'.'
+            `\\_  |     _//'
+              \(  |\    )/
+              //\ |_\  /\\
+             (/ /\(" )/\ \)
+              \/\ (  ) /\/
+                 |(  )|
+                 | \( \
+                 |  )  \
+                 |      \
+                 |       \
+                 |        `.__,
+                 \_________.-'Ojo/gnv
+    
+          http://bong.international/
+    
+-->
+
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        
+        <title>Base</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+        
+        <link rel="stylesheet" href="./style.css" type="text/css" />
+        
+    </head>
+    
+    <body>
+        
+        
+        <p>NL<span class="container"></span><i></i><span class="dc">DC</span></p>        
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+  
+  
+        <script type="text/javascript" src="./bundle.js"></script>
+        <script>
+        
+            var $el = $('.container');
+
+
+            
+            function typeString(str) {
+                
+                ret = str.split("");
+                
+                for ( var i = 1; i < ret.length; i++ ) { 
+                
+                    ret[i] = ret[i-1] + ret[i];
+    
+                }
+                
+                return ret;
+                
+            }
+            
+            var typeSpeed = 100;
+            
+            function makeFrames( strings ) {
+                
+                var ret = [];
+                
+                for ( var i = 0; i < strings.length; i++ ) {
+                    
+                    var string = strings[ i ];
+
+                    for ( var k = 0; k < 25; k++ ) {
+                        ret.push('');
+                    }
+                    
+                    ret = ret.concat( typeString( string ) );
+         
+                    for ( var j = 0; j < 15; j++ ) {
+                        ret.push(string);
+                    }
+                    
+                    ret = ret.concat( typeString( string ).reverse() );
+                  
+                }
+                
+                return ret;
+                
+            }
+            
+            var phrases = ['Dutch Data Center', 'OUR DATA CENTERS DELIVER INCREASED RELIABILITY, SECURITY, SPEED AND PERFORMANCE FOR OUR CUSTOMERS'];
+
+            var frames = makeFrames( phrases );
+
+            var counter = 0;
+
+            var typeTimer = setInterval(function(){
+                
+                var frame = frames[counter];  
+                
+                $el.text( frame );
+                counter++;
+                
+                
+                if ( frame == "" ){
+                    $el.removeClass('typing');
+                } else {
+                    $el.addClass('typing');
+                }
+                
+                
+                if ( frame == "" || phrases.indexOf( frame ) !== -1 ) {
+                    
+                    $('i').addClass('flashing');
+
+                } else {
+                    
+                    $('i').removeClass('flashing');
+
+                }
+                
+                if (counter > frames.length) {                                    
+                    counter = 0;
+                }
+                
+            }, typeSpeed);
+            
+
+        
+        </script>
+    </body>
+    
+</html>

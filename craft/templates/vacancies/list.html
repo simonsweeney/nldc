@@ -1,0 +1,13 @@
+{% for job in craft.entries.section('vacancies') %}
+
+    <div class="block_copy">
+        
+        <p><strong>{{job.title}}</strong></p>
+        
+        {{ job.shortDescription }}
+        
+        <p><a href="{{job.url}}">Find out more</a></p>
+        
+    </div>
+
+{% endfor %}

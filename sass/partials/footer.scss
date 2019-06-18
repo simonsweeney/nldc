@@ -1,0 +1,131 @@
+footer {
+    
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: block;
+    z-index: -10;
+    width: 100%;
+    
+    @include tablet-landscape {
+        margin-top: 0;
+        margin-left: $desktop-sidebar-width;
+        width: 100% - $desktop-sidebar-width;
+    }
+    
+    padding-top: 4em;
+    padding-bottom: 4em;
+    
+    padding-left: $col1 * 10/16;
+    padding-right: $col1 * 10/16;
+    
+    background: $blue;
+    color: white;
+    
+    &:after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    a, a:visited {
+        color: white;
+        text-decoration: none;
+    }
+    
+    ul {
+        width: 100%;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    .links{
+        
+        margin-top: 3em;
+        
+        &:after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        border-bottom: 1px solid white;
+        
+    }
+    
+    .links li {
+        
+        font-size: 1.2em;
+        font-weight: 500;
+        margin-bottom: 3em;
+        background-image: url(assets/icons/arrow_right.svg);
+        background-position: center right;
+        background-repeat: no-repeat;
+        
+        width: 100% * 4/9;
+        
+        @include tablet {
+            width: 100% * 3/8;
+        }
+        
+        &:nth-child(odd) {
+            
+            margin-right: 100% * 1/9;
+            
+            @include tablet{
+                margin-right: 100% * 2/8;
+            }
+            
+        }
+        
+        a {
+            display: block;
+            width: 100%;
+        }
+        
+    }
+    
+    .contact{
+        
+        margin-top: 3em;
+        
+    }
+    
+    .contact li {
+        
+        font-size: .8em;
+        width: 100% * 4/9;
+        margin-right: 100% * 1/9;
+        
+        &:nth-child(odd) {
+            margin-right: 0;
+        }
+        
+        @include tablet {
+            width: 100% * 2/8;
+            margin-right: 100% * 1/8;
+            &:nth-child(odd) {
+                margin-right: 100% * 1/8;
+            }
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+        
+        &:first-child{
+            display: none;
+            @include tablet {
+                display: block;
+            }
+        }
+        
+        img{
+            max-width: 100%;
+        }
+
+        
+    }
+    
+}

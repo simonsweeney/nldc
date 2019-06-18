@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+}
+
+body{
+    
+    margin: 0;
+    background: $blue;
+    overflow-x: hidden;
+    
+    &.page_contact, &.menu-open, &.intro {
+        overflow: hidden;
+    }
+    
+}
+
+a, a:visited {
+    color: inherit;
+}
+
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+body.loading * {
+    opacity: 0;
+}

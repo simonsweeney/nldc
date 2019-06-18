@@ -1,0 +1,36 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+<div class="carousel">
+    
+    {% set numSlides = entry.carousel | length + 1 %}
+    {% set width = 100 / numSlides %}
+    
+    <div class="carousel__slides" style="width: {{ 100 * numSlides }}%">
+    
+        {% for slide in entry.carousel | merge( [ entry.carousel.first() ] ) %}
+        
+            <div
+                class="carousel__slide"
+                style="background-image: url({{ siteUrl }}{{ slide.image.first().url }}); width: {{ width + 1 }}%; left: {{ width * (loop.index - 1) }}%"
+                data-sidebar-caption="{{ slide.sidebarCaption | e('html_attr') }}"
+            ></div>
+        
+        {% endfor %}
+        
+    </div>
+    
+</div>
+
+{% set break = false %}
+{% for block in entry.blocks if not break %}
+    {% if block.type == 'header' %}
+        <a class="carousel__down" href="#{{ block.text | kebab }}"></a>
+        {% set break = true %}
+    {% endif %}
+{% endfor %}
+
+{% include 'blocks/loop.html' with { blocks: entry.blocks } %}
+
+{% endblock %}

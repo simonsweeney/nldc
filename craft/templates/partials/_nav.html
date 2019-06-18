@@ -1,0 +1,55 @@
+<nav>
+	
+	<div class="nav__inner">
+		
+		{% for pageName in ['home', 'services', 'locations', 'customers', 'about'] %}
+		
+			{% set entry = craft.entries.section( pageName ).first() %}
+			
+			<ul>
+				
+				<li>
+					<a href="{{entry.url}}">
+						{{ pageName }}
+					</a>
+				</li>
+			
+				{% for header in entry.blocks if header.type == 'header' %}
+				
+					<li>
+						<a href="{{ entry.url }}#{{ header.text | kebab }}">
+							{{ header.text }}
+						</a>
+					</li>
+				
+				{% endfor %}
+			
+			</ul>
+		
+		{% endfor %}
+		
+		<ul>
+			<!--<li>-->
+			<!--	<a href="">Login</a>-->
+			<!--</li>-->
+			<!--<li>-->
+			<!--	<a href="">Contact</a>-->
+			<!--</li>-->
+			<!--<li>-->
+			<!--	<a href="">Blog</a>-->
+			<!--</li>-->
+		</ul>
+		
+		<a href="{{ globals.companyBrochure.first().url }}">COMPANY PDF</a>
+		
+	</div>
+	
+</nav>
+
+<div class="menu-button">
+	<span class="burger-1"></span>
+	<span class="burger-2"></span>
+	<span class="burger-3"></span>
+	<span class="x-1"></span>
+	<span class="x-2"></span>
+</div>

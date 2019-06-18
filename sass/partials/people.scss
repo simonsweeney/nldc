@@ -1,0 +1,109 @@
+.grid__item.person-thumbnail {
+    
+    background-size: cover;
+    background-position: center center;
+    
+    a {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .person-thumbnail__info {
+        
+        background: $blue;
+        color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        
+        font-family: 'Roboto';
+        
+        transform: scale(0, 1);
+        transform-origin: 100% 0;
+        
+        transition: transform .3s .1s, color .1s;
+        
+        h2 {
+            margin: 0;
+            color: inherit;
+            font-size: 1em;
+        }
+        
+    }
+    
+    &:hover .person-thumbnail__info {
+    
+        color: white;
+        transform: none;
+        transition: transform .3s, color .1s .3s;
+    
+    }
+    
+}
+
+.person {
+    
+    height: 90vw;
+    margin-top: 6em;
+    margin-bottom: 2em;
+    
+    @include tablet {
+        
+        height: 30vw;
+        
+    }
+    
+    @include tablet-landscape {
+        
+        height: 15vw;
+        margin-top: 8.333vw;
+        
+    }
+    
+    &__portrait,
+    &__info {
+        
+        height: 50%;
+        width: 100%;
+        float: left;
+        
+        @include tablet {
+            height: 100%;
+            width: 50%;
+        }
+        
+    }
+    
+    &__portrait{
+        
+        background-size: cover;
+        background-position: center center;
+        
+    }
+    
+    &__info {
+        
+        background: $blue;
+        color: white;
+        padding: 1em;
+        
+        h2 {
+            margin: 0;
+            color: inherit;
+            font-size: 1em;
+        }
+        
+        a {
+            color: inherit;
+            font-family: inherit;
+        }
+        
+    }
+    
+}
